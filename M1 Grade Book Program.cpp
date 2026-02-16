@@ -10,14 +10,16 @@ const int maximum = 50;
 const int testScores = 5;
 
 void readStudentData(string name[], int grade[][testScores], int &number);
+void calculateAverage(int grade[][testScores], double average[], int& number);
 
 int main()
 {
 	int grade[maximum][testScores], number = 0;
 	string name[maximum];
-	double average;
+	double average[maximum];
 
 	readStudentData(name, grade, number);
+	calculateAverage(grade, average, number);
 
 	return 0;
 }
@@ -37,5 +39,18 @@ void readStudentData(string name[], int grade[][testScores], int &number)
 			inputfile >> grade[number][a];
 		}
 		number++;
+	}
+}
+
+void calculateAverage(int grade[][testScores], double average[], int& number)
+{
+	for (int a = 0; a < number; a++)
+	{
+		double total = 0;
+		for (int b = 0; b < testScores; b++)
+		{
+			total += grade[a][b];
+		}
+		average[a] = total / testScores;
 	}
 }
