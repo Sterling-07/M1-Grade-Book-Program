@@ -11,15 +11,18 @@ const int testScores = 5;
 
 void readStudentData(string name[], int grade[][testScores], int &number);
 void calculateAverage(int grade[][testScores], double average[], int& number);
+void getLetterGrade(double average[], int &number, char letter[]);
 
 int main()
 {
 	int grade[maximum][testScores], number = 0;
 	string name[maximum];
 	double average[maximum];
+	char letter[maximum];
 
 	readStudentData(name, grade, number);
 	calculateAverage(grade, average, number);
+	getLetterGrade(average, number, letter);
 
 	return 0;
 }
@@ -52,5 +55,32 @@ void calculateAverage(int grade[][testScores], double average[], int& number)
 			total += grade[a][b];
 		}
 		average[a] = total / testScores;
+	}
+}
+
+void getLetterGrade(double average[], int & number, char letter[])
+{
+	for (int a = 0; a < number; a++)
+	{
+		if (average[a] >= 90 && average[a] <= 100)
+		{
+			letter[a] = 'A';
+		}
+		else if (average[a] >= 80)
+		{
+			letter[a] = 'B';
+		}
+		else if (average[a] >= 70)
+		{
+			letter[a] = 'C';
+		}
+		else if (average[a] >= 60)
+		{
+			letter[a] = 'D';
+		}
+		else 
+		{
+			letter[a] = 'F';
+		}
 	}
 }
