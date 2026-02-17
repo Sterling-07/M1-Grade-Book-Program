@@ -4,6 +4,7 @@
 #include <iostream>
 #include<fstream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 const int maximum = 50;
@@ -12,6 +13,7 @@ const int testScores = 5;
 void readStudentData(string name[], int grade[][testScores], int &number);
 void calculateAverage(int grade[][testScores], double average[], int& number);
 void getLetterGrade(double average[], int &number, char letter[]);
+void reportResults(char letter[], double average[], string name[], int &number);
 
 int main()
 {
@@ -23,6 +25,7 @@ int main()
 	readStudentData(name, grade, number);
 	calculateAverage(grade, average, number);
 	getLetterGrade(average, number, letter);
+	reportResults(letter, average, name, number);
 
 	return 0;
 }
@@ -83,4 +86,17 @@ void getLetterGrade(double average[], int & number, char letter[])
 			letter[a] = 'F';
 		}
 	}
+}
+
+void reportResults(char letter[], double average[], string name[], int &number)
+{
+	cout << "Average Student Test Scores\n";
+	cout << "---------------------------\n";
+	cout << "Name" << setw(7) << " | " << "Average" << " | " << "Letter\n";
+	cout << name[0] << setw(4) << "| " << setw(5) << average[0] << setw(5) << "| " << setw(3) << letter[0] << "\n";
+	cout << name[1] << setw(5) << "| " << setw(5) << average[1] << setw(5) << "| " << setw(3) << letter[1] << "\n";
+	cout << name[2] << setw(6) << "| " << setw(5) << average[2] << setw(5) << "| " << setw(3) << letter[2] << "\n";
+	cout << name[3] << setw(5) << "| " << setw(5) << average[3] << setw(5) << "| " << setw(3) << letter[3] << "\n";
+	cout << name[4] << setw(2) << "| " << setw(5) << average[4] << setw(5) << "| " << setw(3) << letter[4] << "\n";
+	cout << name[5] << setw(4) << "| " << setw(5) << average[5] << setw(5) << "| " << setw(3) << letter[5] << "\n";
 }
